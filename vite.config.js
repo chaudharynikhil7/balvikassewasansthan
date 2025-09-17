@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
-  // base: "/YOUR_REPO_NAME/", // Uncomment and set this ONLY for GitHub Pages
+  base: "/balvikassewasansthan/",
   plugins: [react()],
   resolve: {
     alias: {
