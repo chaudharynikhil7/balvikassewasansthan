@@ -86,7 +86,8 @@ const Home = () => {
             className="w-full h-full object-cover"
             alt="Brown Indian kids from school having mid day meal lunches"
             // src="https://images.unsplash.com/photo-1523594754950-8078d0da4664"
-            src="images/school.png"
+            // src="images/school.png"
+            src={`${import.meta.env.BASE_URL}images/school.png`}
           />
         </div>
 
