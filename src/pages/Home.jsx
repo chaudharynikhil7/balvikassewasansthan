@@ -1,29 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Users, Heart, Award, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
+// import { motion, AnimatePresence } from "framer-motion";
+
+const heroImages = [
+  `${import.meta.env.BASE_URL}images/school.png`,
+  "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c",
+  "https://images.unsplash.com/photo-1617878227827-8360231f7f03",
+  `${import.meta.env.BASE_URL}images/oldagehome.png`,
+];
 
 const Home = () => {
-  const handleDonate = () => {
-    toast({
-      title: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
-    });
-  };
+  const [currentImage, setCurrentImage] = useState(0);
+  // const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  const handleGetInvolved = () => {
-    toast({
-      title: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
-    });
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 5000); // Change image every 3.5 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   const stats = [
     { icon: Users, number: "5,000+", label: "Children Fed Daily" },
-    { icon: Heart, number: "10", label: "Old-Age Homes Supported" },
-    { icon: Award, number: "50+", label: "Schools Reached" },
-    { icon: Calendar, number: "15+", label: "Years of Service" },
+    { icon: Heart, number: "10+", label: "Old-Age Homes Supported" },
+    { icon: Award, number: "100+", label: "Schools Reached" },
+    { icon: Calendar, number: "20+", label: "Years of Service" },
   ];
 
   const programs = [
@@ -82,13 +87,28 @@ const Home = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 hero-gradient opacity-90"></div>
         <div className="absolute inset-0">
-          <img
-            className="w-full h-full object-cover"
-            alt="Brown Indian kids from school having mid day meal lunches"
-            // src="https://images.unsplash.com/photo-1523594754950-8078d0da4664"
-            // src="images/school.png"
-            src={`${import.meta.env.BASE_URL}images/school.png`}
-          />
+          {heroImages.map((image, index) => (
+            <motion.div
+              key={index}
+              className="absolute inset-0"
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: currentImage === index ? 1 : 0,
+                scale: currentImage === index ? 1 : 1.05,
+              }}
+              transition={{
+                duration: 2.5,
+                ease: [0.4, 0, 0.2, 1],
+              }}
+            >
+              <img
+                src={image}
+                alt="Hero"
+                className="w-full h-full object-cover"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            </motion.div>
+          ))}
         </div>
 
         <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -118,23 +138,25 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button
-              onClick={handleDonate}
-              size="lg"
-              className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-4 rounded-full text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
-            >
-              Donate Now
-              <Heart className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              onClick={handleGetInvolved}
-              variant="outline"
-              size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-2xl transition-all duration-300 transform hover:scale-105"
-            >
-              Get Involved
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Link to="/donate">
+              <Button
+                size="lg"
+                className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-4 rounded-full text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
+              >
+                Donate Now
+                <Heart className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link to="/get-involved">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-2 border-white text-gray-600 hover:bg-white hover:text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-2xl transition-all duration-300 transform hover:scale-105"
+              >
+                Get Involved
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -378,14 +400,15 @@ const Home = () => {
               you can help us transform more lives.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                onClick={handleDonate}
-                size="lg"
-                className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-4 rounded-full text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
-              >
-                Make a Donation
-                <Heart className="ml-2 h-5 w-5" />
-              </Button>
+              <Link to="/donate">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-4 rounded-full text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
+                >
+                  Make a Donation
+                  <Heart className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
               <Link to="/get-involved">
                 <Button
                   variant="outline"

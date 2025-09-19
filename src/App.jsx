@@ -9,6 +9,8 @@ import Programs from "@/pages/Programs";
 import GetInvolved from "@/pages/GetInvolved";
 import Media from "@/pages/Media";
 import Contact from "@/pages/Contact";
+import Donate from "@/pages/Donate";
+import DonationSuccess from "@/pages/DonationSuccess";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/get-involved" element={<GetInvolved />} />
           <Route path="/media" element={<Media />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/donation-success" element={<DonationSuccess />} />
         </Routes>
       </main>
       <Footer />

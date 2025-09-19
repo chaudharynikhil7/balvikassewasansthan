@@ -24,7 +24,7 @@ const Footer = () => {
               Dedicated to transforming lives through education, nutrition, and care. We serve communities across Delhi
               and Bihar, bringing hope and opportunity to those who need it most.
             </p>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <button
                 onClick={handleSocialClick}
                 className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
@@ -43,7 +43,7 @@ const Footer = () => {
               >
                 <Twitter className="h-6 w-6" />
               </button>
-            </div>
+            </div> */}
           </div>
 
           {/* Quick Links */}
@@ -75,6 +75,11 @@ const Footer = () => {
                   Contact Us
                 </Link>
               </li>
+              <li>
+                <Link to="/donate" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  Donate
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -84,15 +89,16 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-300 text-sm">Delhi & Bihar, India</span>
+                <span className="text-gray-300 text-sm">D-76, GALI NO.1, SWAROOP NAGAR, DELHI 110042</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-300 text-sm">+91 XXXXX XXXXX</span>
+                <span className="text-gray-300 text-sm">+91 87603 60000</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-300 text-sm">info@balvikassewasansthan.com</span>
+                <span className="text-gray-300 text-sm">peaceac77@gmail.com</span>
+                {/* <span className="text-gray-300 text-sm">info@balvikassewasansthan.com</span> */}
               </div>
             </div>
           </div>
@@ -100,7 +106,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © 2024 Bal Vikas Sewa Sansthan. All rights reserved. |
+            © 2005-2025 Bal Vikas Sewa Sansthan. All rights reserved. |
             <span className="ml-2">Registered NGO serving communities with love and dedication.</span>
           </p>
         </div>

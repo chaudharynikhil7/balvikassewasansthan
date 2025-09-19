@@ -46,12 +46,11 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <Button
-              onClick={handleDonate}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              Donate Now
-            </Button>
+            <Link to="/donate">
+              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                Donate Now
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -86,12 +85,14 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button
-                onClick={handleDonate}
-                className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-full font-semibold"
-              >
-                Donate Now
-              </Button>
+              <Link to="/donate" className="w-full block">
+                <Button
+                  onClick={() => setIsOpen(false)}
+                  className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-full font-semibold"
+                >
+                  Donate Now
+                </Button>
+              </Link>
             </div>
           </motion.div>
         )}
